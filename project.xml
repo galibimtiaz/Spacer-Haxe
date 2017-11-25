@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="Spacer" package="com.twiined.spacer" version="1.0.0" company="Twiined" />
+	<app main="core.Spacer" path="Export" file="Spacer" swf-version="12.0" />
+	<source path="src" />
+	<window fps="60" height="800" width="800" />
+	<haxelib name="openfl" />
+	<haxelib name="actuate" />
+	<haxelib name="starling" />
+	
+	<assets path="Assets" rename="assets" />
+	
+</project>
