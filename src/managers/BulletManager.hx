@@ -1,8 +1,8 @@
 package managers;
 
-import pool.StarlingPool;
 import core.Assets;
 import objects.Bullet;
+import pool.StarlingPool;
 import states.Play;
 
 class BulletManager

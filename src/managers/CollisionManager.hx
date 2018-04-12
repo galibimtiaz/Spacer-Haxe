@@ -49,7 +49,7 @@ class CollisionManager
             _p2.y = a.y;
             if (Point.distance(_p1, _p2) < a.pivotY + _play.hero.pivotY)
             {
-                _play._game.changeState(Game.GAME_OVER_STATE);
+                _play.game.changeState(Game.GAME_OVER_STATE);
             }
             i--;
         }

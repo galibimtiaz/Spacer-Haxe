@@ -2,7 +2,6 @@ package utils;
 
 import haxe.Constraints.Function;
 import openfl.geom.Point;
-import openfl.utils.Object;
 import starling.core.Starling;
 import starling.display.Stage;
 import starling.events.Touch;

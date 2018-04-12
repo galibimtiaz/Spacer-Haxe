@@ -22,26 +22,13 @@ class Background extends Sprite
         sky2.y = -sky1.height;
         addChild(sky2);
 		
-		flatten();
 		
 		
     }
     
     public function update(deltaTime:Float) : Void
     {
-        /*sky1.y += 10 * deltaTime;
-		
-        if (sky1.y >= 800)
-        {
-            sky1.y = -800;
-        }
-        sky2.y += 10 * deltaTime;
-		
-        if (sky2.y >= 800)
-        {
-            sky2.y = -800;
-        }*/
-		
+       
 		this.y += 5 * deltaTime;
 		
 		if (this.y >= 800){

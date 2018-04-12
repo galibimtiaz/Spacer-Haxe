@@ -1,7 +1,6 @@
 package states;
 
 import core.Game;
-import flash.display.Stage;
 import flash.events.MouseEvent;
 import interfaces.IState;
 import managers.AlienManager;
@@ -11,7 +10,6 @@ import managers.ExplosionManager;
 import objects.Background;
 import objects.Hero;
 import objects.Score;
-import starling.core.Starling;
 import starling.display.Sprite;
 import starling.events.Event;
 import utils.MouseInputControl;

@@ -2,6 +2,8 @@ package objects;
 
 import starling.display.Sprite;
 import starling.text.TextField;
+import starling.text.TextFormat;
+import starling.utils.Align;
 
 class Score extends Sprite
 {
@@ -10,8 +12,9 @@ class Score extends Sprite
     public function new()
     {
         super();
-        _score = new TextField(300, 100, "0", "KomikaAxis", 32, 0xFFFFFF);
-        _score.hAlign = "right";
+		var _textFormate:TextFormat = new TextFormat("KomikaAxis", 32, 0xFFFFFF, Align.RIGHT);
+		
+        _score = new TextField(300, 100, "0",_textFormate);
         addChild(_score);
     }
     

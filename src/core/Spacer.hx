@@ -4,15 +4,11 @@ package core;
 import core.Game;
 import openfl.display.Sprite;
 import openfl.display3D.Context3DRenderMode;
+import openfl.geom.Point;
+import openfl.geom.Rectangle;
 import starling.core.Starling;
 import starling.events.ResizeEvent;
-import starling.events.Event;
-import openfl.geom.Rectangle;
-import openfl.errors.Error;
-import starling.utils.RectangleUtil;
-import starling.utils.Max;
 import utils.StageUtil;
-import openfl.geom.Point;
 
 
 

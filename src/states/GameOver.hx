@@ -8,6 +8,8 @@ import starling.display.Button;
 import starling.display.Sprite;
 import starling.events.Event;
 import starling.text.TextField;
+import starling.text.TextFormat;
+import starling.utils.Align;
 
 class GameOver extends Sprite implements IState
 {
@@ -30,10 +32,11 @@ class GameOver extends Sprite implements IState
         _background = new Background();
 		_background.x = stage.stageWidth / 2 - _background.width / 2;
         addChild(_background);
+		
+		var _textFormate:TextFormat = new TextFormat("KomikaAxis", 72, 0xFFFFFF, Align.CENTER);
         
-        _overText = new TextField(800, 200, "GAME OVER", "KomikaAxis", 72, 0xFFFFFF);
+        _overText = new TextField(800, 200, "GAME OVER",_textFormate);
 		_overText.x = stage.stageWidth / 2 - _overText.width / 2;
-        _overText.hAlign = "center";
         _overText.y = 200;
         addChild(_overText);
         

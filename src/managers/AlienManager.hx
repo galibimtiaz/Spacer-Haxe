@@ -1,8 +1,7 @@
 package managers;
 
-import pool.StarlingPool;
 import objects.Alien;
-import objects.Bullet;
+import pool.StarlingPool;
 import starling.core.Starling;
 import states.Play;
 import utils.Utils;
@@ -52,7 +51,7 @@ class AlienManager
         Starling.current.juggler.add(a);
         aliens.push(a);
         a.y = -50;
-        a.x = Utils.randomRange(_play._background.x,_play._background.x + _play._background.width);
+        a.x = Utils.randomRange(_play.background.x,_play.background.x + _play.background.width);
         _play.addChild(a);
     }
     

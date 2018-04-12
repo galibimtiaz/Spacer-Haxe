@@ -6,8 +6,6 @@ import starling.display.Sprite;
 
 class Bullet extends Sprite
 {
-	
-	private var _bulletType:Int;
 
     public function new()
     {

@@ -1,13 +1,10 @@
 package core;
 
 import haxe.Constraints.Function;
-import openfl.media.Sound;
 import starling.text.BitmapFont;
 import starling.text.TextField;
 import starling.textures.Texture;
 import starling.textures.TextureAtlas;
-import starling.extensions.PDParticleSystem;
-import starling.extensions.ParticleSystem;
 import starling.utils.AssetManager;
 
 class Assets
