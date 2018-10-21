@@ -65,7 +65,7 @@ class AlienManager
             {
                 aliens.splice(i, 1);
                 Starling.current.juggler.remove(a);
-                a.removeFromParent(true);
+                a.removeFromParent();
                 _pool.returnObject(a);
             }
         }

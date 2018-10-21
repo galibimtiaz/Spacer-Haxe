@@ -24,7 +24,7 @@ class Spacer extends Sprite {
 		super ();
 		
 		stageUtil = new StageUtil(stage);
-		starling = new Starling (Game, stage,null,null,Context3DRenderMode.SOFTWARE);
+		starling = new Starling (Game, stage,null,null,Context3DRenderMode.AUTO);
 		
 		
 		starling.stage.addEventListener(ResizeEvent.RESIZE, onResize);

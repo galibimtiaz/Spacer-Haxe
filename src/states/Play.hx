@@ -14,6 +14,8 @@ import starling.display.Sprite;
 import starling.events.Event;
 import utils.MouseInputControl;
 
+import starling.events.TouchEvent;
+
 class Play extends Sprite implements IState
 {
     public var game : Game;
@@ -60,12 +62,12 @@ class Play extends Sprite implements IState
         mouseControl = new MouseInputControl(onUp, onDown);
     }
     
-    private function onDown(event : MouseEvent) : Void
+    private function onDown() : Void
     {
         
     }
     
-    private function onUp(event : MouseEvent) : Void
+    private function onUp() : Void
     {
        
         bulletManager.count = 0;

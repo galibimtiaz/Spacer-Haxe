@@ -72,7 +72,7 @@ class BulletManager
             if (bullets[i] == b)
             {
                 bullets.splice(i, 1);
-                b.removeFromParent(true);
+                b.removeFromParent();
                 _pool.returnObject(b);
             }
         }

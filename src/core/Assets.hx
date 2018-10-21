@@ -49,8 +49,8 @@ class Assets
 		var desyrelTexture:Texture = Texture.fromBitmapData(openfl.Assets.getBitmapData("assets/komika.png"), false);
         var desyrelXml:Xml = Xml.parse(openfl.Assets.getText("assets/komika.fnt")).firstElement();
         var bitmapFont = new BitmapFont(desyrelTexture, desyrelXml);
-        TextField.registerBitmapFont(bitmapFont, bitmapFont.name);
 		
+        TextField.registerBitmapFont(bitmapFont, bitmapFont.name);
         
 		manager.addSound("explosion", openfl.Assets.getSound("assets/explosion.mp3"));
 		manager.addSound("shoot", openfl.Assets.getSound("assets/shoot.mp3"));
