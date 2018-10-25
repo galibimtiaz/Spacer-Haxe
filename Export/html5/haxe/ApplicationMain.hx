@@ -20,94 +20,129 @@ import haxe.macro.Expr;
 	
 	public static function main () {
 		
-		var projectName = "Spacer";
-		
-		var config = {
-			
-			build: "8",
-			company: "Twiined",
-			file: "Spacer",
-			fps: 60,
-			name: "Spacer",
-			orientation: "",
-			packageName: "com.twiined.spacer",
-			version: "1.0.0",
-			windows: [
-				
-				{
-					allowHighDPI: false,
-					alwaysOnTop: false,
-					antialiasing: 0,
-					background: 16777215,
-					borderless: false,
-					colorDepth: 16,
-					depthBuffer: true,
-					display: 0,
-					fullscreen: false,
-					hardware: true,
-					height: 800,
-					hidden: #if munit true #else false #end,
-					maximized: false,
-					minimized: false,
-					parameters: {},
-					resizable: true,
-					stencilBuffer: true,
-					title: "Spacer",
-					vsync: false,
-					width: 800,
-					x: null,
-					y: null
-				},
-			]
-			
-		};
-		
-		lime.system.System.__registerEntryPoint (projectName, create, config);
-		
-		#if (hxtelemetry && !macro)
-		var telemetry = new hxtelemetry.HxTelemetry.Config ();
-		telemetry.allocations = true;
-		telemetry.host = "localhost";
-		telemetry.app_name = config.name;
-		Reflect.setField (config, "telemetry", telemetry);
-		#end
+		lime.system.System.__registerEntryPoint ("Spacer", create);
 		
 		#if (js && html5)
 		#if (munit || utest)
-		lime.system.System.embed (projectName, null, 800, 800, config);
+		lime.system.System.embed ("Spacer", null, 800, 800);
 		#end
 		#else
-		create (config);
+		create (null);
 		#end
 		
 	}
 	
 	
-	public static function create (config:lime.app.Config):Void {
+	public static function create (config):Void {
 		
 		var app = new openfl.display.Application ();
-		app.create (config);
 		
 		ManifestResources.init (config);
 		
+		app.meta["build"] = "10";
+		app.meta["company"] = "Twiined";
+		app.meta["file"] = "Spacer";
+		app.meta["name"] = "Spacer";
+		app.meta["packageName"] = "com.twiined.spacer";
+		app.meta["version"] = "1.0.0";
+		
+		
+		
+		#if !flash
+		
+		var attributes:lime.ui.WindowAttributes = {
+			
+			allowHighDPI: false,
+			alwaysOnTop: false,
+			borderless: false,
+			// display: 0,
+			element: null,
+			frameRate: 60,
+			#if !web fullscreen: false, #end
+			height: 800,
+			hidden: #if munit true #else false #end,
+			maximized: false,
+			minimized: false,
+			parameters: {},
+			resizable: true,
+			title: "Spacer",
+			width: 800,
+			x: null,
+			y: null,
+			
+		};
+		
+		attributes.context = {
+			
+			antialiasing: 0,
+			background: 16777215,
+			colorDepth: 32,
+			depth: true,
+			hardware: true,
+			stencil: true,
+			type: null,
+			vsync: false
+			
+		};
+		
+		if (app.window == null) {
+			
+			if (config != null) {
+				
+				for (field in Reflect.fields (config)) {
+					
+					if (Reflect.hasField (attributes, field)) {
+						
+						Reflect.setField (attributes, field, Reflect.field (config, field));
+						
+					} else if (Reflect.hasField (attributes.context, field)) {
+						
+						Reflect.setField (attributes.context, field, Reflect.field (config, field));
+						
+					}
+					
+				}
+				
+			}
+			
+			#if sys
+			lime.system.System.__parseArguments (attributes);
+			#end
+			
+		}
+		
+		app.createWindow (attributes);
+		
+		#elseif !air
+		
+		app.window.context.attributes.background = 16777215;
+		app.window.frameRate = 60;
+		
+		#end
+		
 		var preloader = getPreloader ();
-		app.setPreloader (preloader);
-		preloader.create (config);
-		preloader.onComplete.add (start.bind (app.window.stage));
+		app.preloader.onProgress.add (function (loaded, total) {
+			@:privateAccess preloader.update (loaded, total);
+		});
+		app.preloader.onComplete.add (function () {
+			@:privateAccess preloader.start ();
+		});
+		
+		preloader.onComplete.add (start.bind (cast (app.window, openfl.display.Window).stage));
 		
 		for (library in ManifestResources.preloadLibraries) {
 			
-			preloader.addLibrary (library);
+			app.preloader.addLibrary (library);
 			
 		}
 		
 		for (name in ManifestResources.preloadLibraryNames) {
 			
-			preloader.addLibraryName (name);
+			app.preloader.addLibraryName (name);
 			
 		}
 		
-		preloader.load ();
+		app.preloader.load ();
 		
 		var result = app.exec ();
 		

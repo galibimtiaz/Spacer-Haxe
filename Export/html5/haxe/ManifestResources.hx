@@ -1,7 +1,6 @@
 package;
 
 
-import lime.app.Config;
 import lime.utils.AssetLibrary;
 import lime.utils.AssetManifest;
 import lime.utils.Assets;
@@ -20,7 +19,7 @@ import sys.FileSystem;
 	public static var preloadLibraryNames:Array<String>;
 	
 	
-	public static function init (config:Config):Void {
+	public static function init (config:Dynamic):Void {
 		
 		preloadLibraries = new Array ();
 		preloadLibraryNames = new Array ();
@@ -53,7 +52,18 @@ import sys.FileSystem;
 		
 		var data, manifest, library;
 		
-		data = '{"name":null,"assets":"aoy4:pathy18:assets%2Fatlas.pngy4:sizei83805y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y18:assets%2Fatlas.xmlR2i1271R3y4:TEXTR5R7R6tgoR2i17141R3y5:MUSICR5y22:assets%2Fexplosion.mp3y9:pathGroupaR10hR6tgoR0y22:assets%2Fexplosion.pexR2i1989R3R8R5R12R6tgoR0y19:assets%2Fkomika.fntR2i6650R3R8R5R13R6tgoR0y19:assets%2Fkomika.pngR2i156716R3R4R5R14R6tgoR2i9218R3R9R5y18:assets%2Fshoot.mp3R11aR15hR6tgoR0y16:assets%2Fsky.pngR2i386655R3R4R5R16R6tgoR0y18:assets%2Fsmoke.pexR2i1992R3R8R5R17R6tgh","version":2,"libraryArgs":[],"libraryType":null}';
+		#if kha
+		
+		null
+		library = AssetLibrary.fromManifest (manifest);
+		Assets.registerLibrary ("null", library);
+		
+		if (library != null) preloadLibraries.push (library);
+		else preloadLibraryNames.push ("null");
+		
+		#else
+		
+		data = '{"name":null,"assets":"aoy4:pathy18:assets%2Fatlas.pngy4:sizei83805y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y18:assets%2Fatlas.xmlR2i1291R3y4:TEXTR5R7R6tgoR2i17141R3y5:MUSICR5y22:assets%2Fexplosion.mp3y9:pathGroupaR10hR6tgoR0y22:assets%2Fexplosion.pexR2i1989R3R8R5R12R6tgoR0y19:assets%2Fkomika.fntR2i6707R3R8R5R13R6tgoR0y19:assets%2Fkomika.pngR2i156716R3R4R5R14R6tgoR2i9218R3R9R5y18:assets%2Fshoot.mp3R11aR15hR6tgoR0y16:assets%2Fsky.pngR2i386655R3R4R5R16R6tgoR0y18:assets%2Fsmoke.pexR2i1992R3R8R5R17R6tgh","rootPath":null,"version":2,"libraryArgs":[],"libraryType":null}';
 		manifest = AssetManifest.parse (data, rootPath);
 		library = AssetLibrary.fromManifest (manifest);
 		Assets.registerLibrary ("default", library);
@@ -64,11 +74,19 @@ import sys.FileSystem;
 		else preloadLibraryNames.push ("default");
 		
 		
+		#end
+		
 	}
 	
 	
 }
 
+
+#if kha
+
+null
+
+#else
 
 #if !display
 #if flash
@@ -87,16 +105,16 @@ import sys.FileSystem;
 
 #elseif (desktop || cpp)
 
-@:image("Assets/atlas.png") #if display private #end class __ASSET__assets_atlas_png extends lime.graphics.Image {}
-@:file("Assets/atlas.xml") #if display private #end class __ASSET__assets_atlas_xml extends haxe.io.Bytes {}
-@:file("Assets/explosion.mp3") #if display private #end class __ASSET__assets_explosion_mp3 extends haxe.io.Bytes {}
-@:file("Assets/explosion.pex") #if display private #end class __ASSET__assets_explosion_pex extends haxe.io.Bytes {}
-@:file("Assets/komika.fnt") #if display private #end class __ASSET__assets_komika_fnt extends haxe.io.Bytes {}
-@:image("Assets/komika.png") #if display private #end class __ASSET__assets_komika_png extends lime.graphics.Image {}
-@:file("Assets/shoot.mp3") #if display private #end class __ASSET__assets_shoot_mp3 extends haxe.io.Bytes {}
-@:image("Assets/sky.png") #if display private #end class __ASSET__assets_sky_png extends lime.graphics.Image {}
-@:file("Assets/smoke.pex") #if display private #end class __ASSET__assets_smoke_pex extends haxe.io.Bytes {}
-@:file("") #if display private #end class __ASSET__manifest_default_json extends haxe.io.Bytes {}
+@:keep @:image("Assets/atlas.png") #if display private #end class __ASSET__assets_atlas_png extends lime.graphics.Image {}
+@:keep @:file("Assets/atlas.xml") #if display private #end class __ASSET__assets_atlas_xml extends haxe.io.Bytes {}
+@:keep @:file("Assets/explosion.mp3") #if display private #end class __ASSET__assets_explosion_mp3 extends haxe.io.Bytes {}
+@:keep @:file("Assets/explosion.pex") #if display private #end class __ASSET__assets_explosion_pex extends haxe.io.Bytes {}
+@:keep @:file("Assets/komika.fnt") #if display private #end class __ASSET__assets_komika_fnt extends haxe.io.Bytes {}
+@:keep @:image("Assets/komika.png") #if display private #end class __ASSET__assets_komika_png extends lime.graphics.Image {}
+@:keep @:file("Assets/shoot.mp3") #if display private #end class __ASSET__assets_shoot_mp3 extends haxe.io.Bytes {}
+@:keep @:image("Assets/sky.png") #if display private #end class __ASSET__assets_sky_png extends lime.graphics.Image {}
+@:keep @:file("Assets/smoke.pex") #if display private #end class __ASSET__assets_smoke_pex extends haxe.io.Bytes {}
+@:keep @:file("") #if display private #end class __ASSET__manifest_default_json extends haxe.io.Bytes {}
 
 
 
@@ -108,7 +126,13 @@ import sys.FileSystem;
 
 #if (openfl && !flash)
 
+#if html5
 
+#else
 
 #end
+
+#end
+#end
+
 #end
