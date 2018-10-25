@@ -12,8 +12,20 @@
 		{
 			"label": "debug: flash",
 			"command": "haxelib",
-			"args": ["run", "lime", "build", "flash", "-debug", "-Dfdb"],
-			"problemMatcher": ["$haxe-absolute", "$haxe", "$haxe-error", "$haxe-trace"]
+			"args": [
+				"run",
+				"lime",
+				"build",
+				"flash",
+				"-debug",
+				"-Dfdb"
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				"$haxe-trace"
+			]
 		}
 	]
 }
