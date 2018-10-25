@@ -13,6 +13,7 @@ import starling.events.TouchPhase;
  * @author ...
  */
 class MouseInputControl {
+	
 	public var touchX:Float;
 	public var touchY:Float;
 	public var fire:Bool;
@@ -31,29 +32,28 @@ class MouseInputControl {
 		ready();
 	}
 
-	 private function _onTouch(event:TouchEvent):Void
-		{
-			var touch:Touch = event.getTouch(stageRef, TouchPhase.HOVER);
-			if (touch == null) touch = event.getTouch(stageRef, TouchPhase.BEGAN);
-			if (touch == null) touch = event.getTouch(stageRef, TouchPhase.MOVED);
+	private function _onTouch(event:TouchEvent):Void {
+		var touch:Touch = event.getTouch(stageRef, TouchPhase.HOVER);
+		if (touch == null)
+			touch = event.getTouch(stageRef, TouchPhase.BEGAN);
+		if (touch == null)
+			touch = event.getTouch(stageRef, TouchPhase.MOVED);
 
-			if (touch != null)
-			{
-				var localPos:Point = touch.getLocation(stageRef);
-				touchX  = localPos.x;
-				touchY   = localPos.y;
-			}
+		if (touch != null) {
+			var localPos:Point = touch.getLocation(stageRef);
+			touchX = localPos.x;
+			touchY = localPos.y;
+		}
 
-			if (event.getTouch(stageRef, TouchPhase.BEGAN) != null ){
-				fire = true;
-				onTrouchDown();
-			}else if(event.getTouch(stageRef, TouchPhase.ENDED) != null ){
-				fire = false;
-				onTouchUp();
-			}
-
-		
+		if (event.getTouch(stageRef, TouchPhase.BEGAN) != null) {
+			fire = true;
+			onTrouchDown();
+		} else if (event.getTouch(stageRef, TouchPhase.ENDED) != null) {
+			fire = false;
+			onTouchUp();
+		}
 	}
+
 	/* private function _onTouch(e:TouchEvent):Void {
 		var touch:Touch = e.getTouch(stageRef);
 		if (touch != null) {
@@ -71,8 +71,7 @@ class MouseInputControl {
 				// dragging
 			}
 		}
-	} */
-
+	}*/
 	function ready():Void {}
 
 	public function destroy():Void {
