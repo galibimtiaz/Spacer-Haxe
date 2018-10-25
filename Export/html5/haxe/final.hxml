@@ -10,17 +10,24 @@
 -cp C:/HaxeToolkit/haxe/lib/starling/2,4,1/src
 -D starling=2.4.1
 -cp src
--cp C:/HaxeToolkit/haxe/lib/openfl/8,6,4/externs/flash
--D native-trace
 -D tools=7.1.1
--D flash-use-stage
+-D lime-canvas
+-D howlerjs
 -D no-compilation
--D openfl-flash
--D fdb
+-D openfl-html5
+-D lime-webgl
+-D lime-dom
+-D lime-howlerjs
+-D lime-html5
+-D html5
 -D web
--cp Export/flash
--swf-lib obj/assets.swf
--swf-version 15
--swf Export/flash/bin/Spacer.swf
--cp Export/flash/haxe
+--remap flash:openfl
+--connect
+6000
+-js Export/html5/bin/Spacer.js
+-cp Export/html5/haxe
+-D html5
+-dce full
 -D final
+-D js-flatten
+-dce full

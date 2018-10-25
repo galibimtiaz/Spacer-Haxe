@@ -39,7 +39,7 @@ import haxe.macro.Expr;
 		
 		ManifestResources.init (config);
 		
-		app.meta["build"] = "12";
+		app.meta["build"] = "13";
 		app.meta["company"] = "Twiined";
 		app.meta["file"] = "Spacer";
 		app.meta["name"] = "Spacer";
@@ -52,7 +52,7 @@ import haxe.macro.Expr;
 		
 		var attributes:lime.ui.WindowAttributes = {
 			
-			allowHighDPI: true,
+			allowHighDPI: false,
 			alwaysOnTop: false,
 			borderless: false,
 			// display: 0,

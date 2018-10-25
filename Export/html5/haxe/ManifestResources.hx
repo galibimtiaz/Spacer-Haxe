@@ -63,7 +63,7 @@ import sys.FileSystem;
 		
 		#else
 		
-		data = '{"name":null,"assets":"aoy4:sizei83805y4:typey5:IMAGEy9:classNamey25:__ASSET__assets_atlas_pngy2:idy18:assets%2Fatlas.pnggoR0i1291R1y4:TEXTR3y25:__ASSET__assets_atlas_xmlR5y18:assets%2Fatlas.xmlgoR0i17141R1y5:MUSICR3y29:__ASSET__assets_explosion_mp3R5y22:assets%2Fexplosion.mp3goR0i1989R1R7R3y29:__ASSET__assets_explosion_pexR5y22:assets%2Fexplosion.pexgoR0i6707R1R7R3y26:__ASSET__assets_komika_fntR5y19:assets%2Fkomika.fntgoR0i156716R1R2R3y26:__ASSET__assets_komika_pngR5y19:assets%2Fkomika.pnggoR0i9218R1R10R3y25:__ASSET__assets_shoot_mp3R5y18:assets%2Fshoot.mp3goR0i386655R1R2R3y23:__ASSET__assets_sky_pngR5y16:assets%2Fsky.pnggoR0i1992R1R7R3y25:__ASSET__assets_smoke_pexR5y18:assets%2Fsmoke.pexgh","rootPath":null,"version":2,"libraryArgs":[],"libraryType":null}';
+		data = '{"name":null,"assets":"aoy4:pathy18:assets%2Fatlas.pngy4:sizei83805y4:typey5:IMAGEy2:idR1y7:preloadtgoR0y18:assets%2Fatlas.xmlR2i1291R3y4:TEXTR5R7R6tgoR2i17141R3y5:MUSICR5y22:assets%2Fexplosion.mp3y9:pathGroupaR10y22:assets%2Fexplosion.ogghR6tgoR2i16571R3y5:SOUNDR5R12R11aR10R12hgoR0y22:assets%2Fexplosion.pexR2i1989R3R8R5R14R6tgoR0y19:assets%2Fkomika.fntR2i6707R3R8R5R15R6tgoR0y19:assets%2Fkomika.pngR2i156716R3R4R5R16R6tgoR2i9218R3R9R5y18:assets%2Fshoot.mp3R11aR17y18:assets%2Fshoot.ogghR6tgoR2i9735R3R13R5R18R11aR17R18hgoR0y16:assets%2Fsky.pngR2i386655R3R4R5R19R6tgoR0y18:assets%2Fsmoke.pexR2i1992R3R8R5R20R6tgh","rootPath":null,"version":2,"libraryArgs":[],"libraryType":null}';
 		manifest = AssetManifest.parse (data, rootPath);
 		library = AssetLibrary.fromManifest (manifest);
 		Assets.registerLibrary ("default", library);
@@ -92,15 +92,17 @@ null
 #if flash
 
 @:keep @:bind #if display private #end class __ASSET__assets_atlas_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__assets_atlas_xml extends flash.utils.ByteArray { }
-@:keep @:bind #if display private #end class __ASSET__assets_explosion_mp3 extends flash.media.Sound { }
-@:keep @:bind #if display private #end class __ASSET__assets_explosion_pex extends flash.utils.ByteArray { }
-@:keep @:bind #if display private #end class __ASSET__assets_komika_fnt extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__assets_atlas_xml extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_explosion_mp3 extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_explosion_ogg extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_explosion_pex extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_komika_fnt extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_komika_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__assets_shoot_mp3 extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__assets_shoot_mp3 extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_shoot_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_sky_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__assets_smoke_pex extends flash.utils.ByteArray { }
-@:keep @:bind #if display private #end class __ASSET__manifest_default_json extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__assets_smoke_pex extends null { }
+@:keep @:bind #if display private #end class __ASSET__manifest_default_json extends null { }
 
 
 #elseif (desktop || cpp)
@@ -108,10 +110,12 @@ null
 @:keep @:image("Assets/atlas.png") #if display private #end class __ASSET__assets_atlas_png extends lime.graphics.Image {}
 @:keep @:file("Assets/atlas.xml") #if display private #end class __ASSET__assets_atlas_xml extends haxe.io.Bytes {}
 @:keep @:file("Assets/explosion.mp3") #if display private #end class __ASSET__assets_explosion_mp3 extends haxe.io.Bytes {}
+@:keep @:file("Assets/explosion.ogg") #if display private #end class __ASSET__assets_explosion_ogg extends haxe.io.Bytes {}
 @:keep @:file("Assets/explosion.pex") #if display private #end class __ASSET__assets_explosion_pex extends haxe.io.Bytes {}
 @:keep @:file("Assets/komika.fnt") #if display private #end class __ASSET__assets_komika_fnt extends haxe.io.Bytes {}
 @:keep @:image("Assets/komika.png") #if display private #end class __ASSET__assets_komika_png extends lime.graphics.Image {}
 @:keep @:file("Assets/shoot.mp3") #if display private #end class __ASSET__assets_shoot_mp3 extends haxe.io.Bytes {}
+@:keep @:file("Assets/shoot.ogg") #if display private #end class __ASSET__assets_shoot_ogg extends haxe.io.Bytes {}
 @:keep @:image("Assets/sky.png") #if display private #end class __ASSET__assets_sky_png extends lime.graphics.Image {}
 @:keep @:file("Assets/smoke.pex") #if display private #end class __ASSET__assets_smoke_pex extends haxe.io.Bytes {}
 @:keep @:file("") #if display private #end class __ASSET__manifest_default_json extends haxe.io.Bytes {}
